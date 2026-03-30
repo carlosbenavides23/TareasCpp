@@ -16,5 +16,6 @@ int main() {
 	double salarioSemanal = salarioPorHora * horasTrabajadas;
 
 	cout << "El salario semanal es: " << salarioSemanal << " cordobas" << endl;
+	
 	return 0;
 }

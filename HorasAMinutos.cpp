@@ -13,5 +13,6 @@ int main() {
 	double minutos = horas * 60;
 
 	cout << "La cantidad de minutos es: " << minutos << " minutos" << endl;
+	
 	return 0;
 }

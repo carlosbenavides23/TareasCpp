@@ -16,5 +16,6 @@ int main() {
 	double perimetro = 2 * (base + altura);
 
 	cout << "El perimetro de la parcela es: " << perimetro << " metros" << endl;
+	
 	return 0;
 }

@@ -17,5 +17,6 @@ int main() {
 	double gastoTotal = precioPasaje * numeroViajes;
 
 	cout << "El gasto total en pasajes es: " << gastoTotal << endl;
+	
 	return 0;
 }

@@ -17,5 +17,6 @@ int main() {
 	double total = precioAccesorio * cantidad;
 
 	cout << "El total a pagar es: " << total << endl;
+	
 	return 0;
 }

@@ -13,5 +13,6 @@ int main() {
 	double volumen = lado * lado * lado;
 
 	cout << "El volumen de la caja de exportacion es: " << volumen << " metros cubicos" << endl;
+	
 	return 0;
 }

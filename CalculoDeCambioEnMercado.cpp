@@ -16,5 +16,6 @@ int main() {
 	double total = queso + tortillas;
 
 	cout << "El total a pagar es: " << total << endl;
+	
 	return 0;
 }

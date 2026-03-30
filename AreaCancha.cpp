@@ -14,5 +14,6 @@ int main() {
 	cin >> altura;
 
 	cout << "El area de la cancha es: " << base * altura << " metros cuadrados" << endl;
+	
 	return 0;
 }

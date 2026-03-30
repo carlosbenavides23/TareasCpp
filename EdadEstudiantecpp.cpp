@@ -16,5 +16,6 @@ int main() {
 	int edad = anioActual - anioNacimiento;
 
 	cout << "La edad actual del estudiante es: " << edad << " años" << endl;
+	
 	return 0;
 }

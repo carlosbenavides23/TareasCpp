@@ -17,5 +17,6 @@ int main() {
 	double total = precioCuaderno * cantidad;
 
 	cout << "El total a pagar es: " << total << endl;
+	
 	return 0;
 }

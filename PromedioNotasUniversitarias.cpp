@@ -18,5 +18,6 @@ int main() {
 	double promedio = (nota1 + nota2 + nota3) / 3;
 
 	cout << "El promedio final del estudiante es: " << promedio << endl;
+	
 	return 0;
 }

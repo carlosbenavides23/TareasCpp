@@ -16,5 +16,6 @@ int main() {
 	double distancia = velocidad * tiempo;
 
 	cout << "La distancia recorrida por el transporte es: " << distancia << " km" << endl;
+	
 	return 0;
 }

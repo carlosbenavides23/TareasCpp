@@ -15,5 +15,6 @@ int main() {
 	double total = arroz + azucar;
 
 	cout << "El total a pagar es: " << total << endl;
+	
 	return 0;
 }
