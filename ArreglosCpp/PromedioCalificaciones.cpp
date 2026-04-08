@@ -1,5 +1,5 @@
 /* El programa debe solicitar al usuario ocho calificaciones, almacenarlas en un
- * arreglo y luego mostrar el promedio de las mismas. */
+arreglo y luego mostrar el promedio de las mismas. */
 
 #include <iostream>
 

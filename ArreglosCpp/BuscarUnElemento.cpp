@@ -1,5 +1,5 @@
-/* Dada una lista de palabras, solicita si existe esa palabra o no en la lista.
- */
+/* Dada una lista de palabras, solicita al usuario si existe esa palabra o no en
+la lista. */
 
 #include <iostream>
 #include <string>
@@ -10,7 +10,6 @@ int main() {
                                 "arreglo"};
   std::string palabraBuscada;
 
-  // Solicitar la palabra a buscar
   std::cout << "Ingrese la palabra a buscar: ";
   std::cin >> palabraBuscada;
 

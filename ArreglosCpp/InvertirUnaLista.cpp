@@ -1,5 +1,5 @@
-/* El programa debe leer diez números enteros, almacenarlos en un arreglo y
-luego mostrar el contenido del arreglo.  */
+/* El programa debe pedir 10 numeros al usuario, guardarlos en una lista y luego
+ imprimirlos en orden inverso */
 
 #include <iostream>
 
@@ -7,16 +7,16 @@ int main() {
   const int SIZE = 10;
   int numeros[SIZE];
 
-  // Leer diez números enteros
+  // Solicitar al usuario que ingrese 10 números
   std::cout << "Ingrese " << SIZE << " números enteros:" << std::endl;
   for (int i = 0; i < SIZE; ++i) {
     std::cout << "Número " << (i + 1) << ": ";
     std::cin >> numeros[i];
   }
 
-  // Mostrar el contenido del arreglo
-  std::cout << "Los números ingresados son:" << std::endl;
-  for (int i = 0; i < SIZE; ++i) {
+  // Imprimir los números en orden inverso
+  std::cout << "Los números en orden inverso son:" << std::endl;
+  for (int i = SIZE - 1; i >= 0; --i) {
     std::cout << numeros[i] << " ";
   }
   std::cout << std::endl;

@@ -9,7 +9,7 @@ int main() {
   double suma = 0;
 
   // Solicitar diez numeros
-  std::cout << "Ingrese " << SIZE << " números enteros:" << std::endl;
+  std::cout << "Ingrese " << SIZE << " números:" << std::endl;
   for (int i = 0; i < SIZE; ++i) {
     std::cout << "Número " << (i + 1) << ": ";
     std::cin >> numeros[i];
