@@ -1,30 +1,30 @@
-/* Dada una lista de palabras, solicita al usuario si existe esa palabra o no en
- la lista. */
+/* El programa debe buscar una palabra dentro de una lista predefinida. */
 
 #include <iostream>
-#include <string> // Para usar std::string
+#include <string> // Se usa para trabajar con palabras o textos.
 
 int main() {
   const int numPalabras = 5;
-  std::string palabras[numPalabras] = {
-      "hola", "mundo", "c++", "programacion",
-      "arreglo"};             // Lista de palabras predefinida
-  std::string palabraBuscada; // Variable para almacenar la palabra que el
-                              // usuario desea buscar
+  // Este arreglo ya tiene palabras guardadas desde el inicio.
+  std::string palabras[numPalabras] = {"hola", "mundo", "c++", "programacion",
+                                       "arreglo"};
+  // Aqui se guardara la palabra que escriba el usuario.
+  std::string palabraBuscada;
 
   std::cout << "Ingrese la palabra a buscar: ";
   std::cin >> palabraBuscada;
 
-  // Buscar la palabra en el arreglo
-  bool encontrada = false; // Variable para indicar si la palabra fue encontrada
+  // Se empieza suponiendo que la palabra no esta en la lista.
+  bool encontrada = false;
+  // Se revisa una por una cada palabra del arreglo.
   for (int i = 0; i < numPalabras; ++i) {
     if (palabras[i] == palabraBuscada) {
       encontrada = true;
-      break;
+      break; // Ya no hace falta seguir recorriendo el arreglo.
     }
   }
 
-  // Mostrar el resultado
+  // Segun el valor de 'encontrada', se muestra el resultado final.
   if (encontrada) {
     std::cout << "La palabra '" << palabraBuscada << "' existe en la lista."
               << std::endl;

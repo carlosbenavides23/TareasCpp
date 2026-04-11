@@ -1,22 +1,24 @@
-/* El programa debe solicitar diez números al usuario, almacenarlos en un
+/* El programa debe solicitar diez numeros al usuario, almacenarlos en un
 arreglo y luego mostrar la suma de los elementos del arreglo en total. */
 
 #include <iostream>
-#include <limits> // Para límites numéricos y manejo de errores de entrada
+#include <limits> // Se usa para limpiar la entrada cuando hay errores.
 
 int main() {
   const int numNumeros = 10;
   double numeros[numNumeros];
+  // Aqui se ira guardando la suma de todos los numeros.
   double suma = 0;
 
-  // Solicitar diez numeros
-  std::cout << "Ingrese " << numNumeros << " números:" << std::endl;
+  std::cout << "Ingrese " << numNumeros << " numeros:" << std::endl;
   for (int i = 0; i < numNumeros; ++i) {
     while (true) {
-      std::cout << "Número " << (i + 1) << ": ";
+      std::cout << "Numero " << (i + 1) << ": ";
       std::cin >> numeros[i];
 
       if (std::cin.fail()) {
+        // Si el dato no es numerico, se limpia la entrada para intentarlo otra
+        // vez.
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << "Entrada invalida. Debe ingresar un numero.\n";
@@ -25,11 +27,11 @@ int main() {
         break;
       }
     }
-    suma += numeros[i]; // Sumar el número al total
+    // Cada numero ingresado se agrega a la suma total.
+    suma += numeros[i];
   }
 
-  // Mostrar la suma de los elementos del arreglo
-  std::cout << "La suma de los números ingresados es: " << suma << std::endl;
+  std::cout << "La suma de los numeros ingresados es: " << suma << std::endl;
 
   return 0;
 }

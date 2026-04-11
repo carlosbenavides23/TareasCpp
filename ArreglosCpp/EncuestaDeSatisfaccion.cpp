@@ -3,25 +3,29 @@ valoran un servicio del 1 al 5. Despues almacenar las respuestas en una lista,
 contar cuantas personas eligieron cada puntuacion, y por ultimo mostrar el
 porcentaje de satisfaccion (4 y 5) */
 
-#include <iomanip> // Para manipular el formato de salida (std::fixed, std::setprecision)
+#include <iomanip> // Se usa para mostrar el porcentaje con decimales fijos.
 #include <iostream>
-#include <limits> // Para límites numéricos y manejo de errores de entrada
+#include <limits> // Se usa para limpiar la entrada cuando el usuario escribe algo invalido.
 
 int main() {
   const int numEncuestas = 20;
   int encuestas[numEncuestas];
-  int conteo[5] = {0}; // Para contar las respuestas de 1 a 5
-                       // Solicitar las encuestas con validación
+  // conteo[0] guarda cuantas personas respondieron 1, conteo[1] las de 2, etc.
+  int conteo[5] = {0};
+
   for (int i = 0; i < numEncuestas; ++i) {
+    // 'valor' guarda temporalmente la respuesta antes de almacenarla.
     int valor;
 
     while (true) {
       std::cout << "Ingrese la puntuacion de satisfaccion para la persona "
                 << (i + 1) << " (1-5): ";
       std::cin >> valor;
-      // Validar la entrada
+
       if (std::cin.fail()) {
+        // clear() quita el estado de error para poder seguir usando std::cin.
         std::cin.clear();
+        // ignore() descarta lo que quedo escrito en la linea incorrecta.
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << "Entrada invalida: ingrese un numero entero.\n";
       } else if (valor < 1 || valor > 5) {
@@ -33,11 +37,12 @@ int main() {
       }
     }
 
-    encuestas[i] = valor; // Almacenar la respuesta en el arreglo
-    conteo[valor -
-           1]++; // Incrementar el conteo para la puntuacion que corresponde
+    encuestas[i] = valor;
+    // Se resta 1 porque los indices del arreglo van de 0 a 4, no de 1 a 5.
+    conteo[valor - 1]++;
   }
-  // Calcular el porcentaje de satisfaccion (4 y 5)
+
+  // Se consideran satisfechos los que respondieron 4 o 5.
   int totalSatisfechos = conteo[3] + conteo[4];
   double porcentajeSatisfaccion =
       static_cast<double>(totalSatisfechos) / numEncuestas * 100;

@@ -2,14 +2,14 @@
 arreglo y luego mostrar el promedio de las mismas. */
 
 #include <iostream>
-#include <limits> // Para límites numéricos y manejo de errores de entrada
+#include <limits> // Se usa para limpiar la entrada cuando hay errores.
 
 int main() {
   const int numCalificaciones = 8;
   double calificaciones[numCalificaciones];
+  // Aqui se va acumulando la suma total para luego calcular el promedio.
   double suma = 0;
 
-  // Solicitar ocho calificaciones
   std::cout << "Ingrese " << numCalificaciones
             << " calificaciones:" << std::endl;
   for (int i = 0; i < numCalificaciones; ++i) {
@@ -18,6 +18,7 @@ int main() {
       std::cin >> calificaciones[i];
 
       if (std::cin.fail()) {
+        // Si la entrada no es numerica, se limpia para volver a intentar.
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << "Entrada invalida. Debe ingresar un numero.\n";
@@ -26,10 +27,10 @@ int main() {
         break;
       }
     }
-    suma += calificaciones[i]; // Sumar la calificación al total
+    suma += calificaciones[i];
   }
 
-  // Calcular y mostrar el promedio
+  // El promedio se obtiene dividiendo la suma total entre la cantidad de notas.
   double promedio = suma / numCalificaciones;
   std::cout << "El promedio de las calificaciones es: " << promedio
             << std::endl;

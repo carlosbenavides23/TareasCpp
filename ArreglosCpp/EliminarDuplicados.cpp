@@ -1,36 +1,43 @@
-/* Dada una lista con valores repetidos, el programa debe crear una nueva lista
- sin duplicados.*/
+/* El programa debe eliminar los valores duplicados de una lista. */
 
 #include <iostream>
 
 int main() {
   const int numNumeros = 10;
   int numeros[numNumeros] = {1, 2, 3, 4, 5, 2, 3, 6, 7, 8};
+  // Aqui se guardaran solamente los numeros que no esten repetidos.
   int sinDuplicados[numNumeros];
+  // Indica cuantos elementos validos tiene el nuevo arreglo.
   int nuevoTamanio = 0;
-  // Mostrar la lista original
+
   std::cout << "Lista original:" << std::endl;
   for (int i = 0; i < numNumeros; ++i) {
     std::cout << numeros[i] << " ";
   }
   std::cout << std::endl << std::endl;
-  // Recorrer la lista original y agregar solo los elementos únicos a la nueva
-  // lista
+
+  // Se analiza cada elemento del arreglo original.
   for (int i = 0; i < numNumeros; ++i) {
+    // Se asume al inicio que el numero todavia no esta repetido.
     bool esDuplicado = false;
+
+    // Solo se compara con las posiciones ya llenas del nuevo arreglo.
     for (int j = 0; j < nuevoTamanio; ++j) {
       if (numeros[i] == sinDuplicados[j]) {
+        // Si ya estaba guardado antes, no se debe volver a agregar.
         esDuplicado = true;
         break;
       }
     }
     if (!esDuplicado) {
+      // nuevoTamanio tambien indica la siguiente posicion disponible.
       sinDuplicados[nuevoTamanio] = numeros[i];
       nuevoTamanio++;
     }
   }
-  // Mostrar la lista sin duplicados
+
   std::cout << "Lista sin duplicados:" << std::endl;
+  // Solo se muestran las posiciones que realmente fueron llenadas.
   for (int i = 0; i < nuevoTamanio; ++i) {
     std::cout << sinDuplicados[i] << " ";
   }

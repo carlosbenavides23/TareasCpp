@@ -2,21 +2,20 @@
 ganan mas de $1000, hallar el sueldo promedio e identificar si algun sueldo es
 exactamente $0. */
 
-#include <iomanip> // Para manipular el formato de salida (std::fixed, std::setprecision)
+#include <iomanip> // Se usa para mostrar cantidades con dos decimales.
 #include <iostream>
-#include <limits> // Para límites numéricos y manejo de errores de entrada
+#include <limits> // Se usa para limpiar la entrada cuando el usuario se equivoca.
 
 int main() {
   const int numEmpleados = 12;
   double sueldos[numEmpleados];
-  double suma = 0;    // Acumulador para calcular el promedio
-  int mayoresMil = 0; // Contador para empleados que ganan más de $1000
-  bool haySueldoCero =
-      false; // Variable para detectar si hay algún sueldo igual a $0
+  // Variables para ir calculando los resultados mientras se leen los sueldos.
+  double suma = 0;
+  int mayoresMil = 0;
+  bool haySueldoCero = false;
 
   std::cout << "Ingrese los sueldos de los 12 empleados:" << std::endl;
 
-  // Bucle para ingresar los sueldos con validación
   for (int i = 0; i < numEmpleados; ++i) {
     while (true) {
       std::cout << "Sueldo del empleado " << (i + 1) << ": $";
@@ -27,6 +26,7 @@ int main() {
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << "Entrada invalida. Debe ingresar un numero.\n";
       } else if (sueldos[i] < 0) {
+        // Un sueldo negativo no tiene sentido en este ejercicio.
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << "El sueldo no puede ser negativo.\n";
       } else {
@@ -35,13 +35,13 @@ int main() {
       }
     }
 
-    suma +=
-        sueldos[i]; // Acumular la suma de los sueldos para calcular el promedio
+    suma += sueldos[i];
 
     if (sueldos[i] > 1000) {
       mayoresMil++;
     }
 
+    // Esta variable solo guarda si aparecio al menos un sueldo igual a 0.
     if (sueldos[i] == 0) {
       haySueldoCero = true;
     }
@@ -49,7 +49,6 @@ int main() {
 
   double promedio = suma / numEmpleados;
 
-  // Mostrar los resultados
   std::cout << std::fixed << std::setprecision(2);
   std::cout << "\nResumen de sueldos" << std::endl;
   std::cout << "Cantidad que gana mas de $1000: " << mayoresMil << std::endl;

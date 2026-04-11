@@ -1,46 +1,47 @@
-/* El programa debe leer diez números enteros, almacenarlos en un arreglo y
+/* El programa debe leer diez numeros enteros, almacenarlos en un arreglo y
 luego mostrar el contenido del arreglo. */
 
 #include <iostream>
-#include <sstream> // Para convertir la entrada de texto a número
-#include <string>  // Para usar std::string y std::getline
+#include <sstream> // Se usa para convertir texto a numero y validar la entrada.
+#include <string>  // Se usa para manejar texto y leer lineas completas.
 
 int main() {
   const int numNumeros = 10;
   int numeros[numNumeros];
-  std::string
-      entrada; // Variable para almacenar la entrada del usuario como texto
+  // Aqui se guarda temporalmente lo que el usuario escribe.
+  std::string entrada;
 
   std::cout << "Ingrese " << numNumeros << " numeros enteros:" << std::endl;
 
   for (int i = 0; i < numNumeros; ++i) {
     while (true) {
-      std::cout << "Numero " << (i + 1)
-                << ": ";               // Solicitar el número al usuario
-      std::getline(std::cin, entrada); // Leer la entrada como texto para
-                                       // validar que sea un número entero
+      std::cout << "Numero " << (i + 1) << ": ";
+      // Se lee como texto para poder validar mejor la entrada.
+      std::getline(std::cin, entrada);
 
-      std::stringstream ss(
-          entrada);  // Crear un stringstream para convertir la entrada a número
-      int valor;     // Variable para almacenar el número convertido
-      char sobrante; // Variable para detectar si hay caracteres extra después
-                     // del número
+      // stringstream permite intentar leer el texto como si fuera un numero.
+      std::stringstream ss(entrada);
+      int valor;
+      char sobrante;
 
-      // Validar que la entrada sea un número entero y no contenga caracteres
-      // extra
+      // Si falla esta conversion, significa que no habia un entero valido.
       if (!(ss >> valor)) {
         std::cout << "Entrada invalida. Debe ingresar un numero entero.\n";
       } else if (ss >> sobrante) {
+        // Si queda algo por leer, hubo caracteres extra como letras o
+        // decimales.
         std::cout << "Entrada invalida. No se permiten decimales ni caracteres "
                      "extra.\n";
       } else {
+        // Solo si la entrada es correcta se guarda en el arreglo.
         numeros[i] = valor;
         break;
       }
     }
   }
-  // Mostrar los números ingresados
+
   std::cout << "Los numeros ingresados son:" << std::endl;
+  // Este recorrido muestra los valores almacenados en el arreglo.
   for (int i = 0; i < numNumeros; ++i) {
     std::cout << numeros[i] << " ";
   }

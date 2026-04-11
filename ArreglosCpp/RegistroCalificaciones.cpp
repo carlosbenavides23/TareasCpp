@@ -3,16 +3,17 @@ de validaciones (0-100). Luego mostrar el promedio, la calificacion mas alta, la
 mas baja, y cuantos aprobaron (>=70) */
 
 #include <iostream>
-#include <limits> // Para límites numéricos y manejo de errores de entrada
+#include <limits> // Se usa para limpiar la entrada cuando hay errores.
 
 int main() {
   const int numEstudiantes = 10;
   int calificaciones[numEstudiantes];
-  int suma = 0;      // Acumulador para calcular el promedio
-  int maximo = 0;    // Inicializar máximo con el valor más bajo posible
-  int minimo = 100;  // Inicializar mínimo con el valor más alto posible
-  int aprobados = 0; // Contador para estudiantes aprobados
-                     // Solicitar calificaciones con validación
+  // Estas variables se usaran para calcular las estadisticas finales.
+  int suma = 0;
+  int maximo = 0;
+  int minimo = 100;
+  int aprobados = 0;
+
   for (int i = 0; i < numEstudiantes; ++i) {
     int valor;
     while (true) {
@@ -20,31 +21,33 @@ int main() {
                 << " (0-100): ";
       std::cin >> valor;
 
-      if (std::cin
-              .fail()) {  // Verificar si la entrada es inválida (no numérica)
-        std::cin.clear(); // limpiar el estado de error
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(),
-                        '\n'); // descartar resto de la línea
+      if (std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << "Entrada inválida: ingrese un número entero.\n";
       } else if (valor < 0 || valor > 100) {
+        // No se aceptan notas menores que 0 ni mayores que 100.
         std::cout << "Valor fuera de rango: debe estar entre 0 y 100.\n";
       } else {
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(),
-                        '\n'); // descartar resto de la línea
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         break;
       }
     }
-    // Almacenar la calificación y actualizar estadísticas
+
     calificaciones[i] = valor;
     suma += valor;
+
+    // En el mismo recorrido se actualizan todas las estadisticas.
     if (valor > maximo)
       maximo = valor;
     if (valor < minimo)
       minimo = valor;
+    // Se considera aprobado al estudiante con nota mayor o igual a 70.
     if (valor >= 70)
       aprobados++;
   }
-  // Calcular y mostrar resultados
+
+  // static_cast<double> evita una division entera y permite obtener decimales.
   double promedio = static_cast<double>(suma) / numEstudiantes;
   std::cout << "Promedio: " << promedio << std::endl;
   std::cout << "Calificación más alta: " << maximo << std::endl;
